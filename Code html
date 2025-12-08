@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Journal Alimentaire</title>
+<style>
+body { font-family: Arial; margin: 20px; }
+input, button { margin: 5px; }
+</style>
+</head>
+<body>
+<h2>Journal Alimentaire</h2>
+<input type="text" id="aliment" placeholder="Nom de l'aliment">
+<input type="number" id="calories" placeholder="Calories">
+<button onclick="ajouter()">Ajouter</button>
+
+<h3>Liste</h3>
+<ul id="liste"></ul>
+<h3>Total Calories: <span id="total">0</span></h3>
+
+<script>
+let total = 0;
+function ajouter() {
+    let aliment = document.getElementById('aliment').value;
+    let cal = Number(document.getElementById('calories').value);
+    if(aliment && cal) {
+        let li = document.createElement('li');
+        li.textContent = aliment + ' : ' + cal + ' kcal';
+        document.getElementById('liste').appendChild(li);
+        total += cal;
+        document.getElementById('total').textContent = total;
+        document.getElementById('aliment').value = '';
+        document.getElementById('calories').value = '';
+    }
+}
+</script>
+</body>
+</html>

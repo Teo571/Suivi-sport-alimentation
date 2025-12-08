@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Suivi Sport</title>
+<style>
+body { font-family: Arial; margin: 20px; }
+input, select, button { margin: 5px; }
+</style>
+</head>
+<body>
+<h2>Suivi Sport</h2>
+<select id="type">
+  <option value="Haut du corps">Haut du corps</option>
+  <option value="Bas du corps">Bas du corps</option>
+  <option value="Cardio">Cardio</option>
+</select>
+<input type="text" id="details" placeholder="Détails de la séance">
+<input type="number" id="duree" placeholder="Durée en minutes">
+<button onclick="ajouter()">Ajouter</button>
+
+<ul id="liste"></ul>
+
+<script>
+function ajouter() {
+    let type = document.getElementById('type').value;
+    let details = document.getElementById('details').value;
+    let duree = Number(document.getElementById('duree').value);
+    if(details && duree) {
+        let li = document.createElement('li');
+        li.textContent = type + ' - ' + details + ' : ' + duree + ' min';
+        document.getElementById('liste').appendChild(li);
+        document.getElementById('details').value = '';
+        document.getElementById('duree').value = '';
+    }
+}
+</script>
+</body>
+</html>
